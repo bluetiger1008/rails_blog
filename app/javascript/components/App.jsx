@@ -4,7 +4,6 @@ import Routes from "../routes/index";
 const App = () => {
   return (
     <>
-      test
       <Routes />
     </>
   );
