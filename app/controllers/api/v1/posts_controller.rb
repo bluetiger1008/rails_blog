@@ -31,8 +31,7 @@ class Api::V1::PostsController < ApplicationController
     # POST /posts.json
     def create
       @post = Post.new(post_params)
-  
-  
+    
       if @post.save
         render json: @post
       else
@@ -56,11 +55,11 @@ class Api::V1::PostsController < ApplicationController
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_post
-        @beer = Post.find(params[:id])
+        @post = Post.where(["slug = ?", params[:slug]]).first
       end
   
       # Only allow a list of trusted parameters through.
       def post_params
-        params.permit(:title, :body)
+        params.permit(:slug, :title, :body)
       end
   end
